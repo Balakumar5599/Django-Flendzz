@@ -1,0 +1,28 @@
+<html>
+<head>
+<title>POST YOUR LEARNINGS</title>
+</head>
+
+<body>
+<h1>POST YOUR LEARNING</h1>
+<form action="" method="POST">
+{% csrf_token %}
+Employee ID: <input type="number" name="emp_id">
+Employee Name: <input type="text" name="emp_name">
+Employee Task: <input type="text" name="task_name">
+<input type="submit" value="Post"/>
+</form>
+    <h1>List of Learnings</h1>
+    <table>
+        {% for i in emp %}
+        <tr>
+            <td><b><a href="/learnings_list/{{i.emp_id}}">{{ i.emp_id }}</a></b></td>
+            <td>{{ i.emp_name }}</td>
+            <td>{{ i.task_name }}</td>
+                <td><a href="/remove/{{i.emp_id}}/{{i.emp_name}}/{{i.task_name}}">remove</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+
+</html>
